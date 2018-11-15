@@ -3,7 +3,7 @@
 Since Next.js Apps are Serveside renderes The Google CrawlBot got issus with catching the all the Data, your App provides.
 Next.js uses a spezial Method call getPropsOnInitialLoad, this method provides a Component, data before the Initial Load. The data catched, wil provide the Component with data, to render the whole Content on the Server.
 
-Problem is: Google Crawl Bot cannot catch this data (even it is very clever), this is a huge Problem when it comes to SEO
+`Problem is:` Google Crawl Bot cannot catch this data (even it is very clever), this is a huge Problem when it comes to SEO
 
 But you can provide thr Crawl Bot with an Sitemap.xml and robots.txt like every other Website.
 For this we are using [a third Party Package]('https://github.com/ekalinin/sitemap.js')
@@ -164,4 +164,3 @@ export default () => (
   </div>
 );
 
-```
