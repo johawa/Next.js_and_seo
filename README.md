@@ -1,4 +1,4 @@
-# This a CheatSheet on to improve SEO with a Next.js App
+# This is my Tutorial on how to improve SEO on a Next.js App
 
 Since Next.js Apps are Serveside renderes The Google CrawlBot got issus with catching the all the Data, your App provides.
 Next.js uses a spezial Method call getPropsOnInitialLoad, this method provides a Component, data before the Initial Load. The data catched, wil provide the Component with data, to render the whole Content on the Server.
