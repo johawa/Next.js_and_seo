@@ -28,7 +28,7 @@ sitemap.toXML(function(err, xml) {
 var xml = sitemap.toString();
 ```
 
-### since we are using [Express]('https://www.npmjs.com/package/express') as our Sever:
+### Since we are using [Express]('https://www.npmjs.com/package/express') as our Sever:
 
 ```javascript
 var express = require("express"),
@@ -104,7 +104,7 @@ User-agent: this tells the indexing Bots to crawl all Routes
 Allow: ...wich are behind a specific Route bsp /shop/items/
 Disallow: ...this disallow a specfic Route for example /admin
 
-## Set Up initial SEO_Data for every Page
+## Setup initial SEO_Data for every Page
 
 There is also a way to provide inital SEO Page to your \_document-File or to your Layout HOC with [next-seo]('https://www.npmjs.com/package/next-seo')
 This Package simple Provdies default-Metadata from your Website like:
