@@ -1,4 +1,4 @@
-# This is my Tutorial on how to improve SEO on a Next.js App
+# This a CheatSheet on to improve SEO with a Next.js App
 
 Since Next.js Apps are Serveside renderes The Google CrawlBot got issus with catching the all the Data, your App provides.
 Next.js uses a spezial Method call getPropsOnInitialLoad, this method provides a Component, data before the Initial Load. The data catched, wil provide the Component with data, to render the whole Content on the Server.
@@ -64,39 +64,104 @@ the Database and provide it to GoogleCrawler. So you don't need provide all Rout
 
 ## Crawl from the Database
 
-````javascript
-SHOPITEMS.find({}, '_id').then((SEO_TITLE) => {
-  SEO_TITLE.forEach((item_id) => {
+```javascript
+SHOPITEMS.find({}, "_id").then(SEO_TITLE => {
+  SEO_TITLE.forEach(item_id => {
     sitemap.add({
       url: `/shop/items/${item_id}`,
-      changefreq: 'daily',
-      priority: 1,
+      changefreq: "daily",
+      priority: 1
     });
   });
 });
-````
+```
 
-### Providing Robots.txt 
+### Providing Robots.txt
 
 Create a robots.txt file and porvide it as a static File in ../static/robots.txt.
 
 1.) Add an express Route
 
-````javascript 
-server.get('/robots.txt', (req, res) => {
-  res.sendFile(path.join(__dirname, '../static', 'robots.txt'));
+```javascript
+server.get("/robots.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "../static", "robots.txt"));
 });
-````
-path.join(__dirname) will directly point to the directory you are using
+```
+
+path.join(\_\_dirname) will directly point to the directory you are using
 
 2.) content of this File
 
-````javascript 
+```javascript
 User-agent: *
 Allow: /books/builder-book/
 Disallow: /admin
-````
+```
 
-User-agent: this tells the indexing Bots to crawl all Routes 
+User-agent: this tells the indexing Bots to crawl all Routes
 Allow: ...wich are behind a specific Route bsp /shop/items/
-Disallow: ...this disallow a specfic Route for example /admin 
+Disallow: ...this disallow a specfic Route for example /admin
+
+## Set Up initial SEO_Data for every Page
+
+There is also a way to provide inital SEO Page to your \_document-File or to your Layout HOC with [next-seo]('https://www.npmjs.com/package/next-seo')
+This Package simple Provdies default-Metadata from your Website.
+
+```HTML
+<meta name="description" content="Entdecken, shoppen und einkaufen bei Amazon.de: Günstige Preise für Elektronik &amp; Foto, Filme, Musik, Bücher, Games, Spielzeug, Sportartikel, Drogerie &amp; mehr bei Amazon.de">
+<meta name="keywords" content="xxxx.de, Bücher, Elektronik, Filme, Games, Sportartikel, Schuhe, Spielzeug, Drogerie, Musik, MP3">
+```
+
+### Create your DEFAULT_SEO and save it to a variable
+
+```javascript
+const DEFAULT_SEO = {
+  title: "Next.js SEO Plugin",
+  description: "SEO made easy for Next.js projects",
+  openGraph: {
+    type: "website",
+    locale: "de_IE",
+    url: "xxxxx",
+    title: "your Title",
+    description: "SEO made easy for Next.js projects",
+    image: "xxxxx",
+    site_name: "xxxx",
+    imageWidth: 600,
+    imageHeight: 600
+  },
+  twitter: {
+    handle: "@xxxx",
+    cardType: "summary_large_image"
+  }
+};
+```
+
+### The create a `<NextSEO />` component and fill the `config-Prop` with the `DEFAUL_SEO`
+
+```javascript
+import NextSeo from 'next-seo';
+
+render() {
+    return(
+      <NextSeo config={DEFAULT_SEO} />
+    )
+}
+```
+
+if you want to Change the Data on a specific Site, you can Import the ``NextSeo` Component and update the config Data:
+
+````javascript
+import NextSeo from 'next-seo';
+
+export default () => (
+  <div>
+    <NextSeo
+      config={{
+        title: 'About us',
+        description: 'an other Description'
+      }}
+    />About us
+  </div>
+);
+
+```
