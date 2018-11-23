@@ -5,7 +5,7 @@ Next.js uses a special Method call getPropsOnInitialLoad, this method provides a
 
 `Problem is:` Google Crawl Bot cannot catch this data correctly (even it is very clever), this is a huge Problem when it comes to SEO
 
-But you can provide the Crawl Bot an Sitemap.xml and robots.txt like every other Website, to help 'him' out, this will be generated dynamicly
+You can provide the Crawl Bot an Sitemap.xml and robots.txt like every other Website, to help 'him' out, this will be generated dynamicly
 For this we are using [a third Party Package]('https://github.com/ekalinin/sitemap.js')
   
 ----
