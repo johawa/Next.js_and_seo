@@ -1,11 +1,11 @@
 # This is my Tutorial on how to improve SEO with a Next.js App
 
-Since Next.js Apps are Serveside rendered. The Google CrawlBot got issus with catching the all the Data, your App provides.
+Since Next.js Apps are Serveside rendered Google CrawlBot got issues with catching the all the Data, your App provides.
 Next.js uses a special Method call getPropsOnInitialLoad, this method provides a Component with data before the initial-load. The data catched, wil provide the Component with data, to render the whole Content on the Server.
 
 `Problem is:` Google Crawl Bot cannot catch this data correctly (even it is very clever), this is a huge Problem when it comes to SEO
 
-But you can provide the Crawl Bot an Sitemap.xml and robots.txt like every other Website, to help 'him' out.
+But you can provide the Crawl Bot an Sitemap.xml and robots.txt like every other Website, to help 'him' out, will will be generated dynamicly
 For this we are using [a third Party Package]('https://github.com/ekalinin/sitemap.js')
   
 ----
